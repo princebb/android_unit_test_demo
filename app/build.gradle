@@ -20,6 +20,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            force group: 'androidx.test', name: 'monitor', version: '1.2.0'
+        }
+    }
 }
 
 dependencies {
@@ -37,4 +48,9 @@ dependencies {
     testImplementation 'org.powermock:powermock-api-mockito2:2.0.2'
     testImplementation 'org.powermock:powermock-classloading-xstream:2.0.2'
     testImplementation 'org.robolectric:robolectric:4.3'
+    debugImplementation 'androidx.fragment:fragment-testing:1.2.0-alpha01'
+    //RxJava
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.7'
+    //RxAndroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 }
